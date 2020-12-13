@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Assembler</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+        textarea {
+            background: url(2cOaJ.png);
+            background-attachment: local;
+            background-repeat: no-repeat;
+            padding-left: 35px;
+            padding-top: 10px;
+            border-color: #ccc;
+            font-family: 'Lucida Console';
+            font-size: 11.5px;
+            height: calc(100% - 25px);
+            width: 100%;
+            resize: none;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-areas:
+                'header header'
+                'left right'
+                'footerL footerR';
+            grid-gap: 10px;
+            padding: 5px;
+            grid-template-rows: 150px auto 100px;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;">
+    <div class="grid-container" style="padding-top: 20px;height: 100vh;">
+        <div style="grid-area: header;">
+            <p>This is a super minimal assembler for the MIPS processor developed
+                by the project goup FPGA 2020 at Uni Bonn.
+            </p>
+            <p>This Processor unconditionally executes one instruction after every jump and three after every beq.</p>
+            <p>Supported Instructions are: add, sub, and, or, nor, lw, sw, addi, beq, j, and break.</p>
+            <p>li is implemented as pseudo instruction.</p>
+            <p>Comments can be at the end of the line, beginning with "#" or ";".</p>
+        </div>
+        <div style="grid-area: left;">
+            <p>Assembler</p>
+            <textarea spellcheck="false" wrap="off" id="assembly" name="assembly">
+add $t0, $t1, $t2
+sub $t0, $t1, $t2
+and $t0, $t1, $t2
+or $t0, $t1, $t2
+nor $t0, $t1, $t2
+li $t2, 25		# Load immediate value (25) 
+lw $t3, 32($s2)		# Load the word stored in value (see bottom)
+addi $t0, $zero, 64
+beq $t0, $t1, 2
+j 0
+add $t4, $t2, $t3	# Add
+sub $t5, $t2, $t3	# Subtract
+sw $t5, 32($s2)		#Store the answer in Z (declared at the bottom)  
+            </textarea>
+        </div>
+        <div style="grid-area: right;">
+            <p>Byte Code</p>
+            <textarea spellcheck="false" wrap="off" id="byteCode" name="byteCode"></textarea>
+        </div>
+        <div style="grid-area: footerL;">
+            <button id="loadBtn">load</button>
+            <button id="saveBtn">save</button>
+        </div>
+        <div style="grid-area: footerR;">
+            <button id="downloadBtn">download</button>
+        </div>
+    </div>
+
+
+    <script src="parse.js"></script>
+</body>
+
+</html>

@@ -47,9 +47,10 @@
             <p>Comments can be at the end of the line, beginning with "#" or ";".</p>
         </div>
         <div style="grid-area: left;">
-            <p>Assembler</p>
+            <p><span style="font-weight: bold;">Assembler</span> <span>Fill delayslots<input id="DelayFill" type="checkbox"></span>
+                <span>enable NOPfilling<input id="NOPFill" type="checkbox"></span> </p>
             <textarea spellcheck="false" wrap="off" id="assembly" name="assembly">
-add $t0, $t1, $t2
+<!-- add $t0, $t1, $t2
 sub $t0, $t1, $t2
 and $t0, $t1, $t2
 or $t0, $t1, $t2
@@ -61,11 +62,11 @@ beq $t0, $t1, 2
 j 0
 add $t4, $t2, $t3	# Add
 sub $t5, $t2, $t3	# Subtract
-sw $t5, 32($s2)		#Store the answer in Z (declared at the bottom)  
+sw $t5, 32($s2)		#Store the answer in Z (declared at the bottom)   -->
             </textarea>
         </div>
         <div style="grid-area: right;">
-            <p>Byte Code</p>
+            <p style="font-weight: bold;">Byte Code</p>
             <textarea spellcheck="false" wrap="off" id="byteCode" name="byteCode"></textarea>
         </div>
         <div style="grid-area: footerL;">
@@ -77,7 +78,7 @@ sw $t5, 32($s2)		#Store the answer in Z (declared at the bottom)
         </div>
     </div>
 
-
+    <script src="twosComplement.js"></script>
     <script src="parse.js"></script>
 </body>
 

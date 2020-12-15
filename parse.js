@@ -20,9 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("saveBtn").addEventListener("click", () => {
         localStorage.setItem('code', assemblyEl.value);
     });
-    if (localStorage.getItem('backup'))
+    if (localStorage.getItem('backup')) {
         assemblyEl.value = localStorage.getItem('backup');
-    byteCodeEl.value = assemble(localStorage.getItem('backup'));
+        byteCodeEl.value = assemble(localStorage.getItem('backup'));
+    }
+    
     document.getElementById("loadBtn").addEventListener("click", () => {
         assemblyEl.value = localStorage.getItem('code');
         byteCodeEl.value = assemble(localStorage.getItem('code'));

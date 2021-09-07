@@ -25,9 +25,9 @@
         .grid-container {
             display: grid;
             grid-template-areas:
-                'header header'
-                'left right'
-                'footerL footerR';
+                'header header header'
+                'left middle right'
+                'footerL footerM footerR';
             grid-gap: 10px;
             padding: 5px;
             grid-template-rows: 150px auto 100px;
@@ -47,8 +47,9 @@
             <p>Comments can be at the end of the line, beginning with "#" or ";".</p>
         </div>
         <div style="grid-area: left;">
-            <p><span style="font-weight: bold;">Assembler</span> <span>Fill delayslots<input id="DelayFill" type="checkbox"></span>
-                <span>enable NOPfilling<input id="NOPFill" type="checkbox"></span> </p>
+            <p><span style="font-weight: bold;">Assembler</span> <span>Fill delayslots<input id="DelayFill"
+                        type="checkbox" checked="true"></span>
+                <span>enable NOPfilling<input id="NOPFill" type="checkbox" checked="true"></span> </p>
             <textarea spellcheck="false" wrap="off" id="assembly" name="assembly">
 <!-- add $t0, $t1, $t2
 sub $t0, $t1, $t2
@@ -65,8 +66,14 @@ sub $t5, $t2, $t3	# Subtract
 sw $t5, 32($s2)		#Store the answer in Z (declared at the bottom)   -->
             </textarea>
         </div>
+        <div style="grid-area: middle;">
+            <p><span style="font-weight: bold;">Clean Assembler </span>
+                <span>offset in Binary<input id="useBinCleanAssembler" type="checkbox"></span> </p>
+            <textarea spellcheck="false" wrap="off" id="cleanAssembly" name="cleanAssembly"></textarea>
+        </div>
         <div style="grid-area: right;">
-            <p style="font-weight: bold;">Byte Code</p>
+            <p><span style="font-weight: bold;">Byte Code </span>
+                <span>show Hex<input id="bcUseHex" type="checkbox" checked="true"></span> </p>
             <textarea spellcheck="false" wrap="off" id="byteCode" name="byteCode"></textarea>
         </div>
         <div style="grid-area: footerL;">
